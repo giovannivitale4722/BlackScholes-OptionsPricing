@@ -51,4 +51,63 @@ An interactive bar chart visualizes the "Greeks":
 
 ***
 
-## 📁 Project Structure
+***
+
+## 🔧 Technical Details
+
+* **Client-Side Only**: No server required; runs entirely in the browser.
+* **Modular Structure**: Clean separation of HTML, CSS, and JavaScript.
+* **Chart.js Integration**: Professional-quality charts and visualizations.
+* **Responsive Design**: Works on desktop and mobile devices.
+* **Real-Time Updates**: All calculations update automatically on input change.
+
+***
+
+## 📈 Educational Value
+
+This calculator helps users understand:
+* How different parameters affect option prices.
+* The relationship between volatility and option value.
+* Time decay effects on option pricing.
+* The Greeks and their practical significance.
+* Visual patterns in option pricing across different scenarios.
+
+***
+
+## 🌐 Browser Compatibility
+
+Works in all modern browsers including:
+* Chrome
+* Firefox
+* Safari
+* Edge
+
+***
+
+## 📝 Mathematical Foundation
+
+The calculator implements the complete Black-Scholes model.
+
+The price of a **call option** $C$ is given by:
+$$C(S, T) = S N(d_1) - K e^{-rT} N(d_2)$$
+
+The price of a **put option** $P$ is given by:
+$$P(S, T) = K e^{-rT} N(-d_2) - S N(-d_1)$$
+
+Where:
+$$d_1 = \frac{\ln(S/K) + (r + \frac{\sigma^2}{2})T}{\sigma\sqrt{T}}$$
+$$d_2 = d_1 - \sigma\sqrt{T}$$
+
+And:
+* $N(x)$ is the standard normal cumulative distribution function.
+* $S$ is the current stock price.
+* $K$ is the strike price.
+* $T$ is the time to maturity in years.
+* $r$ is the annualized risk-free interest rate.
+* $\sigma$ is the volatility of the stock's returns.
+
+All "Greeks" are calculated using the standard partial derivatives of these formulas.
+
+---
+
+*Disclaimer: This tool is built for educational and analytical purposes only and is not intended for making actual trading decisions.*
