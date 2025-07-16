@@ -51,8 +51,6 @@ An interactive bar chart visualizes the "Greeks":
 
 ***
 
-***
-
 ## 🔧 Technical Details
 
 * **Client-Side Only**: No server required; runs entirely in the browser.
