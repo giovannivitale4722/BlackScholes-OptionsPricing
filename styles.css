@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #e67e22;
+}
+
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e67e22;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e67e22;
+    cursor: pointer;
+    border: none;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.result-item {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #e67e22;
+}
+
+.result-label {
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 5px;
+}
+
+.result-value {
+    font-size: 1.2em;
+    color: #2d3748;
+    font-weight: bold;
+}
+
+.visualization-section {
+    margin-top: 30px;
+}
+
+.greeks-container {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.chart-container {
+    height: 400px;
+    margin-top: 20px;
+}
+
+.heatmap-section {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: visible;
+}
+
+.heatmap-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.heatmap-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+    justify-items: center;
+}
+
+.heatmap-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    overflow: visible;
+}
+
+.heatmap-with-legend {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.heatmap-canvas-container {
+    position: relative;
+    margin-bottom: 80px;
+    margin-left: 110px;
+}
+
+.axis-label {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+.axis-label.x-axis {
+    bottom: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.axis-label.y-axis {
+    left: -95px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.axis-ticks {
+    position: absolute;
+    font-size: 12px;
+    color: #666;
+    font-weight: bold;
+}
+
+.axis-ticks.x-axis {
+    bottom: -15px;
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+}
+
+.axis-ticks.y-axis {
+    left: -30px;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    top: 0;
+}
+
+.legend-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-bar-vertical {
+    width: 20px;
+    height: 350px;
+    background: linear-gradient(to top, #ff4444, #ff8844, #ffaa44, #88ff44, #44ff44);
+    border-radius: 5px;
+}
+
+.heatmap-canvas {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: crosshair;
+}
+
+.heatmap-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.legend-bar {
+    width: 300px;
+    height: 20px;
+    background: linear-gradient(to right, #ff4444, #ff8844, #ffaa44, #88ff44, #44ff44);
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.tooltip {
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .heatmap-controls {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .heatmap-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .heatmap-item {
+        max-width: 100%;
+    }
+    
+    .heatmap-canvas-container {
+        margin-left: 80px;
+        margin-bottom: 70px;
+    }
+    
+    .heatmap-item h3 {
+        margin-left: 40px !important;
+        width: 500px !important;
+    }
+    
+    .heatmap-with-legend {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .legend-vertical {
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 0;
+    }
+    
+    .legend-bar-vertical {
+        width: 200px;
+        height: 20px;
+        background: linear-gradient(to right, #ff4444, #ff8844, #ffaa44, #88ff44, #44ff44);
+    }
+    
+    .axis-label.y-axis {
+        left: -75px;
+    }
+    
+    .axis-ticks.y-axis {
+        left: -60px;
+    }
+} 

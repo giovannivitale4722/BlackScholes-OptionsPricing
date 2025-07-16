@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Black-Scholes Options Pricing Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Black-Scholes Options Pricing Calculator</h1>
+        
+        <div class="calculator-grid">
+            <!-- Input Parameters -->
+            <div class="card">
+                <h2>Input Parameters</h2>
+                <div class="input-group">
+                    <label for="stockPrice">Stock Price (S)</label>
+                    <input type="number" id="stockPrice" value="100" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="strikePrice">Strike Price (K)</label>
+                    <input type="number" id="strikePrice" value="105" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="timeToMaturity">Time to Maturity (days)</label>
+                    <input type="number" id="timeToMaturity" value="30" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="riskFreeRate">Risk-Free Rate (%)</label>
+                    <input type="number" id="riskFreeRate" value="5" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="volatility">Volatility (%)</label>
+                    <input type="number" id="volatility" value="20" step="0.01">
+                </div>
+            </div>
+
+            <!-- Results Display -->
+            <div class="card">
+                <h2>Calculated Prices</h2>
+                <div class="results">
+                    <div class="result-item">
+                        <div class="result-label">Call Option Price</div>
+                        <div class="result-value" id="callPrice">$0.00</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Put Option Price</div>
+                        <div class="result-value" id="putPrice">$0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Greeks Dashboard -->
+        <div class="visualization-section">
+            <div class="greeks-container">
+                <h2>The Greeks Dashboard</h2>
+                <div class="chart-container">
+                    <canvas id="greeksChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heatmap Section -->
+        <div class="heatmap-section">
+            <h2>Price Heatmap</h2>
+            <div class="heatmap-controls">
+                <div class="input-group">
+                    <label for="stockPriceMin">Min Stock Price</label>
+                    <input type="number" id="stockPriceMin" value="80" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="stockPriceMax">Max Stock Price</label>
+                    <input type="number" id="stockPriceMax" value="120" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="volatilityMin">Min Volatility (%): <span id="volMinValue">10</span></label>
+                    <input type="range" id="volatilityMin" min="5" max="30" value="10" step="1" class="slider">
+                </div>
+                <div class="input-group">
+                    <label for="volatilityMax">Max Volatility (%): <span id="volMaxValue">50</span></label>
+                    <input type="range" id="volatilityMax" min="25" max="100" value="50" step="5" class="slider">
+                </div>
+            </div>
+            <div class="heatmap-container">
+                <div class="heatmap-item">
+                    <h3 style="text-align: center; margin-bottom: 10px; margin-left: 50px; width: 500px;">Call Option Prices</h3>
+                    <div class="heatmap-with-legend">
+                        <div class="heatmap-canvas-container">
+                            <canvas id="callHeatmap" class="heatmap-canvas" width="500" height="500"></canvas>
+                            <div class="axis-label x-axis">Stock Price ($)</div>
+                            <div class="axis-label y-axis">Volatility (%)</div>
+                            <div class="axis-ticks x-axis" id="callXTicks"></div>
+                            <div class="axis-ticks y-axis" id="callYTicks"></div>
+                        </div>
+                        <div class="legend-vertical">
+                            <span>High</span>
+                            <div class="legend-bar-vertical"></div>
+                            <span>Low</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="heatmap-item">
+                    <h3 style="text-align: center; margin-bottom: 10px; margin-left: 70px; width: 500px;">Put Option Prices</h3>
+                    <div class="heatmap-with-legend">
+                        <div class="heatmap-canvas-container">
+                            <canvas id="putHeatmap" class="heatmap-canvas" width="500" height="500"></canvas>
+                            <div class="axis-label x-axis">Stock Price ($)</div>
+                            <div class="axis-label y-axis">Volatility (%)</div>
+                            <div class="axis-ticks x-axis" id="putXTicks"></div>
+                            <div class="axis-ticks y-axis" id="putYTicks"></div>
+                        </div>
+                        <div class="legend-vertical">
+                            <span>High</span>
+                            <div class="legend-bar-vertical"></div>
+                            <span>Low</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
